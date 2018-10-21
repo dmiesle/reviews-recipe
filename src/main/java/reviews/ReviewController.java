@@ -23,7 +23,7 @@ public class ReviewController {
 		Optional<Review> review = reviewRepo.findById(id);
 
 		if (review.isPresent()) {
-			model.addAttribute("reviews", review.get());
+			model.addAttribute("review", review.get());
 			return "review";
 		}
 		throw new ReviewNotFoundException();
@@ -42,7 +42,7 @@ public class ReviewController {
 		Optional<Category> category = categoryRepo.findById(id);
 
 		if (category.isPresent()) {
-			model.addAttribute("categories", category.get());
+			model.addAttribute("category", category.get());
 			return "category";
 		}
 		throw new CategoryNotFoundException();

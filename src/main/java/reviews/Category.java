@@ -31,6 +31,10 @@ public class Category {
 	public String getName() {
 		return name;
 	}
+	
+	public Collection<Review> getReviews(){
+		return reviews;
+	}
 
 	@Override
 	public int hashCode() {

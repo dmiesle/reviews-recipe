@@ -5,15 +5,15 @@
 </head>
 <body>
 	<h1>Review</h1>
-<div th:each = "review: ${reviews}">
 		<p th:text = "${review.name}"></p>
+		<img th:src = "${review.image}">
 		<p th:text = "${review.description}"></p>
-		<div th:each="catgegory: ${catgegory}">
-				<li>
-					<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
-				</li>
-			</div>
-		<a href ="http://localhost:8080/reviews">Back to home</a>
+<div th:each="category: ${review.categories}">
+	<li>
+		<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
+	</li>
 </div>
+		<a href ="http://localhost:8080/reviews">Back to reviews</a>
+
 </body>
 </html>

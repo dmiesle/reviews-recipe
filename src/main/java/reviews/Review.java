@@ -22,15 +22,17 @@ public class Review {
 	
 	@ManyToMany
 	private Collection<Category> categories;
+	private String imageUrl;
 	
 	public Review() {
 		
 	}
 
-	public Review(String name, String description, Category...categories) {
+	public Review(String name, String imageUrl, String description, Category...categories) {
 		this.name = name;
 		this.description = description;
 		this.categories = new HashSet<>(Arrays.asList(categories));
+		this.imageUrl = imageUrl;
 	}
 
 	public long getId() {
@@ -40,6 +42,10 @@ public class Review {
 	public String getName() {
 		return name;
 	}
+	public String getImage() {
+		return imageUrl;
+	}
+	
 
 	public String getDescription() {
 		return description;

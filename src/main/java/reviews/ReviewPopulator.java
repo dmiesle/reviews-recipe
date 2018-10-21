@@ -22,13 +22,13 @@ public class ReviewPopulator implements CommandLineRunner {
 	Category dessert = categoryRepo.save(new Category("Dessert"));
 	Category side = categoryRepo.save(new Category("Side"));
 	
-	Review bruschetta = new Review("Bruschetta", "Traditional Italian food that involves hard starch and a topping", appetizer);
+	Review bruschetta = new Review("Bruschetta","/img/bruschetta.jpg", "Traditional Italian food that involves hard starch and a topping", appetizer);
 	bruschetta = reviewRepo.save(bruschetta);
-	Review steak = new Review("Steak", "It's whats for dinner", maindish);
+	Review steak = new Review("Steak","/img/steak.jpg", "It's whats for dinner", maindish);
 	steak = reviewRepo.save(steak);
-	Review cookies = new Review("Cookies", "portable dessert delivery system", dessert);
+	Review cookies = new Review("Cookies","/img/cookies.jpg", "portable dessert delivery system", dessert, appetizer, maindish, side);
 	cookies = reviewRepo.save(cookies);
-	Review fries = new Review("French Fries", "Potatos sliced into pieces and fried, even better when you double fry them", side);
+	Review fries = new Review("French Fries","/img/fries.jpg", "Potatos sliced into pieces and fried, even better when you double fry them", side);
 	fries = reviewRepo.save(fries);
 		
 	}
