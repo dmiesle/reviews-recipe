@@ -31,7 +31,7 @@ public class JPAMappingsTest {
 	
 	@Test
 	public void shouldSaveAndLoadAReview() {
-		Review review = reviewRepo.save(new Review("review", "description"));
+		Review review = reviewRepo.save(new Review("review","url", "description"));
 		long reviewId = review.getId();
 		
 		entityManager.flush();
@@ -63,7 +63,7 @@ public class JPAMappingsTest {
 		entityManager.flush();
 		entityManager.clear();
 		
-		Review review = new Review("Bruschetta", "Traditional Italian food that involves hard starch and a topping", appetizer, snack);
+		Review review = new Review("Bruschetta", "url", "Traditional Italian food that involves hard starch and a topping", appetizer, snack);
 		review = reviewRepo.save(review);
 		
 		assertThat(review.getCategories(), containsInAnyOrder(appetizer, snack));
@@ -73,9 +73,9 @@ public class JPAMappingsTest {
 	public void shouleFindReviewsForCategories() {
 		Category category = categoryRepo.save(new Category("appetizer"));
 		
-		Review bruschetta = new Review("Bruschetta", "Traditional Italian food that involves hard starch and a topping", category);
+		Review bruschetta = new Review("Bruschetta","url", "Traditional Italian food that involves hard starch and a topping", category);
 		bruschetta = reviewRepo.save(bruschetta);
-		Review calamari = new Review("Fried Calamari", "Calamari lightly breaded and fried, served with dipping sauce", category);
+		Review calamari = new Review("Fried Calamari","url", "Calamari lightly breaded and fried, served with dipping sauce", category);
 		calamari = reviewRepo.save(calamari);
 		
 		entityManager.flush();
@@ -92,9 +92,9 @@ public class JPAMappingsTest {
 		Category snack = categoryRepo.save(new Category("snack"));
 		long categoryId = appetizer.getId();
 		
-		Review bruschetta = new Review("Bruschetta", "Traditional Italian food that involves hard starch and a topping", appetizer, snack);
+		Review bruschetta = new Review("Bruschetta","url", "Traditional Italian food that involves hard starch and a topping", appetizer, snack);
 		bruschetta = reviewRepo.save(bruschetta);
-		Review calamari = new Review("Fried Calamari", "Calamari lightly breaded and fried, served with dipping sauce", appetizer);
+		Review calamari = new Review("Fried Calamari","url", "Calamari lightly breaded and fried, served with dipping sauce", appetizer);
 		calamari = reviewRepo.save(calamari);
 		
 		entityManager.flush();
@@ -108,7 +108,7 @@ public class JPAMappingsTest {
 	@Test
 	public void shouldCreateATagAssociatedWithAreview() {
 		Category appetizer = categoryRepo.save(new Category("appetizer"));
-		Review bruschetta = new Review("Bruschetta", "Traditional Italian food that involves hard starch and a topping", appetizer);
+		Review bruschetta = new Review("Bruschetta","url", "Traditional Italian food that involves hard starch and a topping", appetizer);
 		bruschetta = reviewRepo.save(bruschetta);
 		
 	
