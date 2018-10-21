@@ -8,6 +8,7 @@
 	<div th:each="category: ${categories}">
 		<li>
 			<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
+			<p th:text="${category.description}"></p>
 		</li>
 	</div>
 
