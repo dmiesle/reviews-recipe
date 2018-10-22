@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/layout.css">
 <head>
 	<title>Categories</title>
 </head>
 <body>
-    	<h1> Here are the current Categories</h1>
-	<div th:each="category: ${categories}">
+<div class="grid-container">
+		<h1 class ="grid-item grid-item-1"> Here are the current Categories</h1>
+	<ol class="grid-item grid-item-2" th:each="category: ${categories}">
 		<li>
 			<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
 		</li>
-	</div>
-
-
+	</ol>
+<footer>
+	<a class="grid-item grid-item-3" href ="http://localhost:8080/reviews">Look at reviews</a>
+</footer>
+</div>
 </body>
 </html>

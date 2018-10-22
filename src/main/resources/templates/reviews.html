@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/layout.css">
 <head>
 	<title>Reviews</title>
 </head>
 <body>
-	<h1> Here are the current Reviews</h1>
-	<div th:each="review: ${reviews}">
+<div class="grid-container">
+	<div class="grid-item grid-item-1"><h1> Here are the current recipe reviews</h1></div>
+	<div class="grid-item grid-item-2"><section id="content" th:each="review: ${reviews}">
 		<li>
-			<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
+			<h2><a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a></h2>
+			<a th:href="@{/review(id=${review.id})}"><img class="circled" th:src = "${review.image}"></a>
 			<p th:text="${review.description}"></p>
 		</li>
+	</section>
 	</div>
+<footer id="footer">
+	<div class="grid-item grid-item-3"> <a href ="http://localhost:8080/categories">Look at Categories</a>
+	</div>
+</footer>
 
+</div>
 </body>
 </html>
