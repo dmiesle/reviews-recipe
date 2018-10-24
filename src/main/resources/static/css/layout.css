@@ -51,6 +51,17 @@ padding: 1rem;
 h2{
     text-align: center;
   }
+.circled-center {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+ }
 
 .circled {
     width: 200px;
@@ -58,6 +69,8 @@ h2{
     position: relative;
     overflow: hidden;
     border-radius: 50%;
-    margin-left: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
  }
 

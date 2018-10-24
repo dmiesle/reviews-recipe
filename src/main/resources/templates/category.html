@@ -8,14 +8,17 @@
 </head>
 <body>
 <div class="grid-container">
-	<h1 clsas class="grid-item grid-item-1" th:text = "${category.name}"></h1>
-			<div class class="grid-item grid-item-2" th:each="review: ${category.reviews}">
+	<div class="grid-item grid-item-1"><h1 th:text = "${category.name}"></h1>
+			<div class="grid-item grid-item-2"><section id="content" th:each="review: ${category.reviews}">
 					<li>
 						<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
 					</li>
-				</div>
+			</div>
+		</div>
 <footer>
-		<a class="grid-item grid-item-3" href ="http://localhost:8080/categories">Back at Categories</a>
+		<div class="grid-item grid-item-3">
+			<a href ="http://localhost:8080/categories">Back at Categories</a>
+		</div>
 </footer>
 </div>
 </body>

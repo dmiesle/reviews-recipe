@@ -7,15 +7,18 @@
 </head>
 <body>
 	<div class="grid-container">
-	<h1 class="grid-item grid-item-1">Review</h1>
-		<p th:text = "${review.name}"></p>
-		<img th:src = "${review.image}">
+	<div class="grid-item grid-item-1"><h1>Review</h1>
+		<h2><p th:text = "${review.name}"></p></h2>
+		<img class="circled-center" th:src = "${review.image}">
 		<p th:text = "${review.description}"></p>
-		<ol class="grid-item grid-item-2" th:each="category: ${review.categories}">
+		<section id="content">
+			<h3>Categories</h3>
+		<div th:each="category: ${review.categories}">
 		<li>
 			<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
 		</li>
-	</ol>
+	</section>
+	</div>
 <footer>
 		<a class="grid-item grid-item-3" href ="http://localhost:8080/reviews">Back to reviews</a>
 </footer>
