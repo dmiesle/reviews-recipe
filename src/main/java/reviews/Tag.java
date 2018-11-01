@@ -1,8 +1,6 @@
 package reviews;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Review {
+public class Tag {
 	@Id
 	@GeneratedValue
 	private long id;
@@ -21,24 +19,17 @@ public class Review {
 	private String description;
 	
 	@ManyToMany
-	private Collection<Category> categories;
-	private String imageUrl;
+	private Collection<Review> reviews;
+
 	
-	@ManyToMany (mappedBy = "reviews")
-	private Collection<Tag> tags;
-	
-	@ManyToMany (mappedBy = "reviews")
-	private Collection<Comment> comments;
-	
-	public Review() {
+	public Tag() {
 		
 	}
 
-	public Review(String name, String imageUrl, String description, Category...categories) {
+	public Tag (String name, String description) {
 		this.name = name;
 		this.description = description;
-		this.categories = new HashSet<>(Arrays.asList(categories));
-		this.imageUrl = imageUrl;
+
 	}
 
 	public long getId() {
@@ -48,27 +39,15 @@ public class Review {
 	public String getName() {
 		return name;
 	}
-	public String getImage() {
-		return imageUrl;
-	}
-	
 
 	public String getDescription() {
 		return description;
 	}
 	
-	public Collection<Category> getCategories(){
-		return categories;
+	public Collection<Review> getReviews(){
+		return reviews;
 	}
-	
-	public Collection<Tag> getTags(){
-		return tags;
-	}
-	
-	public Collection<Comment> getComments(){
-		return comments;
-	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,10 +64,11 @@ public class Review {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Review other = (Review) obj;
+		Tag other = (Tag) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
+	
 
 }
