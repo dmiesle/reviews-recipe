@@ -13,6 +13,6 @@ public interface TagRepository extends CrudRepository<Tag, Long> {
 
 	Tag findByNameIgnoreCaseLike(String tagName);
 
-	Collection<Review> findByTagContains(Tag tag);
+//	Collection<Review> findByTagContains(Tag tagName);
 
 }

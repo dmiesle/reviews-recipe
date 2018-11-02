@@ -54,7 +54,7 @@ public class CourseControllerTest {
 		when(reviewRepo.findById(reviewId)).thenReturn(Optional.of(review));
 
 		underTest.findOneReview(reviewId, model);
-		verify(model).addAttribute("reviews", review);
+		verify(model).addAttribute("review", review);
 
 	}
 	@Test

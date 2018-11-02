@@ -14,6 +14,10 @@ public class Category {
 	private long id;
 	private String name;
 	
+	public Category(){
+		
+	}
+	
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
 

@@ -37,7 +37,7 @@ public class ReviewController {
 
 	}
 
-	@RequestMapping("/category")
+//	@RequestMapping("/category")
 	public String findOneCategory(@RequestParam(value = "id") long id, Model model) throws CategoryNotFoundException {
 		Optional<Category> category = categoryRepo.findById(id);
 
@@ -48,7 +48,7 @@ public class ReviewController {
 		throw new CategoryNotFoundException();
 	}
 
-	@RequestMapping("/categories")
+//	@RequestMapping("/categories")
 	public String findAllCategories(Model model) {
 		model.addAttribute("categories", categoryRepo.findAll());
 		return ("categories");
