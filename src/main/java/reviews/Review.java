@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Review {
@@ -16,29 +18,30 @@ public class Review {
 	@GeneratedValue
 	private long id;
 	private String name;
-	
+	private String imageUrl;
+
 	@Lob
 	private String description;
-	
-	@ManyToMany
-	private Collection<Category> categories;
-	private String imageUrl;
-	
+
+	@ManyToOne
+	private Category category;
+
 	@ManyToMany
 	private Collection<Tag> tags;
-	
-	@ManyToMany
+
+	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments;
-	
+
 	public Review() {
-		
+
 	}
 
-	public Review(String name, String imageUrl, String description, Category...categories) {
+	public Review(String name, String imageUrl, String description, Category category, Tag... tags) {
 		this.name = name;
 		this.description = description;
-		this.categories = new HashSet<>(Arrays.asList(categories));
+		this.category = category;
 		this.imageUrl = imageUrl;
+		this.tags = new HashSet<>(Arrays.asList(tags));
 	}
 
 	public long getId() {
@@ -48,27 +51,40 @@ public class Review {
 	public String getName() {
 		return name;
 	}
+
 	public String getImage() {
 		return imageUrl;
 	}
-	
 
 	public String getDescription() {
 		return description;
 	}
-	
-	public Collection<Category> getCategories(){
-		return categories;
+
+	public Category getCategory() {
+		return category;
 	}
-	
-	public Collection<Tag> getTags(){
+
+	public Collection<Tag> getTags() {
 		return tags;
 	}
-	
-	public Collection<Comment> getComments(){
+
+	public Collection<Comment> getComments() {
 		return comments;
 	}
-	
+
+	public void addTag(Tag newTag) {
+		tags.add(newTag);
+
+	}
+
+	public void removeTag(Tag tagRemoveThis) {
+		tags.remove(tagRemoveThis);
+	}
+
+//	public Collection<Comment> getComments(){
+//		return comments;
+//	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

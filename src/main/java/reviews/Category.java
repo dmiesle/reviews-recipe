@@ -5,7 +5,7 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -14,10 +14,7 @@ public class Category {
 	private long id;
 	private String name;
 	
-	Category (){
-		
-	}
-	@ManyToMany (mappedBy = "categories")
+	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
 
 	public Category(String name) {

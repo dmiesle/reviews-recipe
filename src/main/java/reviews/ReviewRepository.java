@@ -6,9 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ReviewRepository extends CrudRepository<Review, Long> {
 
-	Collection<Review> findByCategoriesContains(Category category);
+	Collection<Review> findByCategoryContains(Category category);
 	
-	Collection<Review> findByCategoriesId(long id);
+	Collection<Review> findByCategoryId(long id);
 
 
 

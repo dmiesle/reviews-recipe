@@ -8,7 +8,7 @@
 <body>
 <div class="grid-container">
 		<h1 class ="grid-item grid-item-1"> Here are the current Categories</h1>
-	<ol class="grid-item grid-item-2" th:each="category: ${categories}">
+	<ol class="grid-item grid-item-2" th:each="category: ${category}">
 		<li>
 			<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
 		</li>
