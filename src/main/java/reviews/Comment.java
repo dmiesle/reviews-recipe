@@ -1,6 +1,8 @@
 package reviews;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,12 +15,11 @@ public class Comment {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String name;
 	
 	@Lob
 	private String description;
 	
-	@OneToMany
+	@OneToMany (mappedBy = "comment")
 	private Collection<Review> reviews;
 
 	
@@ -26,9 +27,9 @@ public class Comment {
 		
 	}
 
-	public Comment (String name, String description) {
-		this.name = name;
+	public Comment (String description, Review...reviews) {
 		this.description = description;
+		this.reviews = new HashSet<>(Arrays.asList(reviews));
 
 	}
 
@@ -36,9 +37,6 @@ public class Comment {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
 
 	public String getDescription() {
 		return description;

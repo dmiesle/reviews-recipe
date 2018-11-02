@@ -13,6 +13,12 @@ public class ReviewPopulator implements CommandLineRunner {
 
 	@Resource
 	private CategoryRepository categoryRepo;
+	
+	@Resource
+	private CommentRepository commentRepo;
+	
+	@Resource
+	private TagRepository tagRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -21,7 +27,7 @@ public class ReviewPopulator implements CommandLineRunner {
 		Category maindish = categoryRepo.save(new Category("Main Dish"));
 		Category dessert = categoryRepo.save(new Category("Dessert"));
 		Category side = categoryRepo.save(new Category("Side"));
-
+		
 		Review bruschetta = new Review("Bruschetta", "/img/bruschetta.jpg",
 				"Traditional Italian food that involves hard starch and a topping", appetizer);
 		bruschetta = reviewRepo.save(bruschetta);
@@ -34,6 +40,20 @@ public class ReviewPopulator implements CommandLineRunner {
 		Review fries = new Review("French Fries", "/img/fries.jpg",
 				"Potatos sliced into pieces and fried, even better when you double fry them", side);
 		fries = reviewRepo.save(fries);
+		
+		Tag glutenfree = tagRepo.save(new Tag("Gluten Free", steak, fries));
+		glutenfree = tagRepo.save(glutenfree);
+		Tag vegetarian = tagRepo.save(new Tag("Vegetarian", cookies, fries, bruschetta));
+		vegetarian = tagRepo.save(vegetarian);
+		Tag kidfriendly = tagRepo.save(new Tag("Kid Friendly", cookies, fries, steak));
+		kidfriendly = tagRepo.save(kidfriendly);
+		Tag meat = tagRepo.save(new Tag("Meat"));
+		meat = tagRepo.save(meat);
+		
+		Comment one = commentRepo.save(new Comment("It's really that good", cookies));
+		one = commentRepo.save(one);
+		Comment two = commentRepo.save(new Comment("Needs more seasoning", steak));
+		two = commentRepo.save(two);
 
 	}
 

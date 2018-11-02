@@ -24,10 +24,10 @@ public class Review {
 	private Collection<Category> categories;
 	private String imageUrl;
 	
-	@ManyToMany (mappedBy = "reviews")
+	@ManyToMany
 	private Collection<Tag> tags;
 	
-	@ManyToMany (mappedBy = "reviews")
+	@ManyToMany
 	private Collection<Comment> comments;
 	
 	public Review() {
