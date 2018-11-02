@@ -19,6 +19,19 @@ public class TagController {
 
 	@Resource
 	ReviewRepository reviewRepo;
+	
+	@RequestMapping("/tag")
+	public String findOneTag(@RequestParam(value = "id") long id, Model model) throws TagNotFoundException {
+		Optional<Tag> tag = tagRepo.findById(id);
+
+		if (tag.isPresent()) {
+			model.addAttribute("tag", tag.get());
+			return "tag";
+		}
+		throw new TagNotFoundException();
+
+	}
+	
 
 	@RequestMapping("/add-tag")
 	public String addTag(@RequestParam(value = "reviewid") long reviewid, String tagName) {

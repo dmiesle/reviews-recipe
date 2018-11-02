@@ -81,9 +81,6 @@ public class Review {
 		tags.remove(tagRemoveThis);
 	}
 
-//	public Collection<Comment> getComments(){
-//		return comments;
-//	}
 
 	@Override
 	public int hashCode() {
