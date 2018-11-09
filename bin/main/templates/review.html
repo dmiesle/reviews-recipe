@@ -8,8 +8,8 @@
 <body>
 	<div class="grid-container">
 	<div class="grid-item grid-item-1"><h1>Review</h1>
-		<div th:each=review: ${reviewsModel}">
-			<h2><p th:text = "${review.name}"></p></h2>
+		<div th:each="review: ${reviews}">
+			<h2 th:text = "${review.name}"></h2>
 			<img class="circled-center" th:src = "${review.image}">
 			<p th:text="${review.description}"></p>
 			<section id="content">
@@ -31,8 +31,8 @@
 			<form method="Post">
 				<input name="reviewid" type="hidden" th:value="${review.id}"/>
 				<ul>
-					<li th:each="tag: ${review.tags}"><span th:text="$tag.name"}"</span>
-					<button id"x" name="tagId" th:value=${tag.id}" th:formaction="@{remove-tag-button}">&times;</button>
+					<li th:each="tag: ${review.tags}"><span th:text="${tag.name}"></span>
+					<button id="x" name="tagId" th:value="${tag.id}" th:formaction="@{remove-tag-button}">&times</button>
 				</ul>
 			
 			</form>	
@@ -46,9 +46,9 @@
 					<section>
 					<input type="hidden" th:value="${reviewsModel.id}" name="reviewId"/></section>
 				<section>
-					<button th:formactoin =	"@{add-comment}">Add comment</button>
+					<button th:formaction =	"@{add-comment}">Add comment</button>
 				</section>
-								</form>
+				</form>
 				<div th:each="comment: ${review.comments}">
 				<p th:text="${comment.description}"></p>
 				</div>
